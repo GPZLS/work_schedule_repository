@@ -1,12 +1,16 @@
 // server.js
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 const PORT = 3001;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from the 'web' folder
+app.use(express.static('web'));
 
 // Log incoming requests
 app.use((req, res, next) => {
@@ -30,9 +34,9 @@ let weeklyHours = {
 let nextUserId = 4;
 
 // Routes
-
+// This route now serves the index.html file, which is handled by express.static
 app.get('/', (req, res) => {
-  res.send('Welcome to the homepage!');
+  res.sendFile(path.join(__dirname, 'web', 'index.html'));
 });
 
 app.get('/users', (req, res) => {
@@ -168,14 +172,14 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
   console.log('Available endpoints:');
-  console.log('  GET    /');
-  console.log('  GET    /users');
-  console.log('  POST   /users');
-  console.log('  DELETE /users/:id');
-  console.log('  GET    /users/:id/weekly-hours');
-  console.log('  PUT    /users/:id/weekly-hours');
-  console.log('  GET    /weekly-summary');
-  console.log('  GET    /health');
+  console.log('  GET    /');
+  console.log('  GET    /users');
+  console.log('  POST   /users');
+  console.log('  DELETE /users/:id');
+  console.log('  GET    /users/:id/weekly-hours');
+  console.log('  PUT    /users/:id/weekly-hours');
+  console.log('  GET    /weekly-summary');
+  console.log('  GET    /health');
 });
 
 module.exports = app;
