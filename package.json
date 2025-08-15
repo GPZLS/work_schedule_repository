@@ -1,14 +1,27 @@
 {
+  "name": "team-work-schedule-manager",
+  "version": "1.0.0",
+  "description": "Full stack work schedule application",
+  "main": "team-scheduler-backend/server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon team-scheduler-backend/server.js",
+    "start": "node team-scheduler-backend/server.js",
+    "dev": "cd team-scheduler-backend && npm run dev",
+    "backend": "node team-scheduler-backend/server.js",
+    "install-backend": "cd team-scheduler-backend && npm install",
+    "setup": "npm run install-backend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
-    "@mui/material": "^7.3.1",
-    "@mui/system": "^7.3.1",
-    "axios": "^1.11.0"
+  "keywords": [
+    "express",
+    "nodejs", 
+    "team-scheduler",
+    "work-schedule",
+    "api"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "your-repository-url"
   }
 }
