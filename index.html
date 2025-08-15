@@ -19,7 +19,7 @@
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -98,11 +98,24 @@
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
         
+        .btn.success {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .btn.warning {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
         .btn.danger {
             background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
         }
         
-        input[type="text"], input[type="number"] {
+        .btn.small {
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+        
+        input[type="text"], input[type="number"], input[type="email"], input[type="date"], select {
             padding: 12px 16px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
@@ -111,7 +124,7 @@
             min-width: 200px;
         }
         
-        input[type="text"]:focus, input[type="number"]:focus {
+        input:focus, select:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -121,6 +134,7 @@
             overflow-x: auto;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 20px;
         }
         
         table {
@@ -130,7 +144,7 @@
         }
         
         th, td {
-            padding: 16px;
+            padding: 12px;
             text-align: left;
             border-bottom: 1px solid #f0f0f0;
         }
@@ -140,7 +154,7 @@
             font-weight: 600;
             color: #333;
             text-transform: uppercase;
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 0.5px;
         }
         
@@ -168,7 +182,112 @@
             font-size: 14px;
             line-height: 1.6;
             overflow-y: auto;
-            max-height: 400px;
+            max-height: 600px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .modal-header h3 {
+            color: #333;
+            font-size: 1.5rem;
+        }
+        
+        .close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .close:hover {
+            background-color: #ff6b6b;
+            color: white;
+        }
+        
+        .schedule-day {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            background: #fafafa;
+        }
+        
+        .schedule-day h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-transform: capitalize;
+        }
+        
+        .time-slot {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .time-slot select {
+            min-width: 120px;
+        }
+        
+        .time-slot .btn {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+        
+        .add-slot-btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border: 2px dashed #4facfe;
+            color: white;
+            font-weight: 500;
         }
         
         .status-indicator {
@@ -212,17 +331,71 @@
         .error {
             color: #f44336;
             background: #ffebee;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #f44336;
         }
         
         .success {
             color: #4caf50;
             background: #e8f5e8;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .tab {
+            background: none;
+            border: none;
+            padding: 15px 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+            align-items: end;
+        }
+        
+        .form-row > * {
+            flex: 1;
         }
         
         @media (max-width: 768px) {
@@ -251,9 +424,20 @@
                 justify-content: center;
             }
             
-            input[type="text"], input[type="number"] {
+            input, select {
                 min-width: auto;
                 width: 100%;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                padding: 20px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
@@ -262,7 +446,7 @@
     <div class="container">
         <div class="header">
             <h1>🕐 Team Work Schedule Manager</h1>
-            <p>Manage your team's weekly schedules efficiently</p>
+            <p>Manage schedules, availability, and time slots efficiently</p>
         </div>
         
         <div class="main-content">
@@ -288,8 +472,16 @@
             <div class="section">
                 <h2>➕ Add New Team Member</h2>
                 <div class="controls">
-                    <input type="text" id="userName" placeholder="Enter team member name" 
+                    <input type="text" id="userName" placeholder="Enter name" 
                            onkeypress="if(event.key==='Enter') addUser()">
+                    <input type="email" id="userEmail" placeholder="Enter email (optional)">
+                    <select id="userRole">
+                        <option value="Team Member">Team Member</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Developer">Developer</option>
+                        <option value="Designer">Designer</option>
+                        <option value="Analyst">Analyst</option>
+                    </select>
                     <button class="btn" onclick="addUser()">Add Member</button>
                 </div>
             </div>
@@ -298,8 +490,10 @@
                 <h2>🔧 User Management</h2>
                 <div class="controls">
                     <input type="number" id="userId" placeholder="User ID" min="1">
-                    <button class="btn danger" onclick="deleteUser()">Delete User</button>
-                    <button class="btn" onclick="getUserHours()">View Hours</button>
+                    <button class="btn success" onclick="editUserSchedule()">📅 Edit Schedule</button>
+                    <button class="btn warning" onclick="editAvailability()">⏰ Edit Availability</button>
+                    <button class="btn" onclick="getUserHours()">👁️ View Details</button>
+                    <button class="btn danger" onclick="deleteUser()">🗑️ Delete User</button>
                 </div>
             </div>
             
@@ -307,18 +501,78 @@
                 <h2>📋 Data Display</h2>
                 <div id="output">
                     Welcome to the Team Work Schedule Manager!<br><br>
-                    Click any button above to start managing your team's schedule...
+                    🔹 Click "Load All Users" to see team members<br>
+                    🔹 Click "Weekly Summary" to view schedules<br>
+                    🔹 Use "Edit Schedule" to set work hours<br>
+                    🔹 Use "Edit Availability" to set when people are available<br><br>
+                    Ready to get started!
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Modal -->
+    <div id="scheduleModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="scheduleModalTitle">Edit Weekly Schedule</h3>
+                <button class="close" onclick="closeModal('scheduleModal')">&times;</button>
+            </div>
+            <div id="scheduleForm"></div>
+            <div style="margin-top: 20px; text-align: center;">
+                <button class="btn success" onclick="saveSchedule()">💾 Save Schedule</button>
+                <button class="btn" onclick="closeModal('scheduleModal')">❌ Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Availability Modal -->
+    <div id="availabilityModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="availabilityModalTitle">Edit Availability</h3>
+                <button class="close" onclick="closeModal('availabilityModal')">&times;</button>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('permanent')">Permanent Availability</button>
+                <button class="tab" onclick="showTab('temporary')">Temporary Changes</button>
+            </div>
+            
+            <div id="permanent" class="tab-content active">
+                <p style="color: #666; margin-bottom: 20px;">Set the regular hours when this person is available to work.</p>
+                <div id="permanentAvailabilityForm"></div>
+            </div>
+            
+            <div id="temporary" class="tab-content">
+                <p style="color: #666; margin-bottom: 20px;">Set temporary changes for specific dates (overrides permanent availability).</p>
+                <div class="form-row" style="margin-bottom: 20px;">
+                    <div class="form-group">
+                        <label>Select Date:</label>
+                        <input type="date" id="tempDate" onchange="loadTempAvailability()">
+                    </div>
+                    <button class="btn secondary" onclick="addTempAvailability()">Add Date Override</button>
+                </div>
+                <div id="temporaryAvailabilityForm"></div>
+                <div id="existingTempAvailability"></div>
+            </div>
+            
+            <div style="margin-top: 20px; text-align: center;">
+                <button class="btn success" onclick="saveAvailability()">💾 Save Availability</button>
+                <button class="btn" onclick="closeModal('availabilityModal')">❌ Cancel</button>
             </div>
         </div>
     </div>
 
     <script>
         const API_BASE = 'http://localhost:3001/api';
+        let timeSlots = [];
+        let currentUserId = null;
         
-        // Check server status on load
+        // Check server status and load time slots on load
         window.addEventListener('load', () => {
             checkHealth();
+            loadTimeSlots();
             loadWeeklySummary();
         });
         
@@ -345,6 +599,15 @@
             }
         }
         
+        async function loadTimeSlots() {
+            try {
+                timeSlots = await makeRequest('/time-slots');
+                console.log('Time slots loaded:', timeSlots.length);
+            } catch (error) {
+                console.error('Failed to load time slots:', error);
+            }
+        }
+        
         function displayData(data, title = '') {
             const output = document.getElementById('output');
             
@@ -352,24 +615,31 @@
                 // Display users as a table
                 let html = title ? `<strong>${title}</strong><br><br>` : '';
                 html += '<div class="table-container"><table>';
-                html += '<tr><th>ID</th><th>Name</th><th>Actions</th></tr>';
+                html += '<tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Actions</th></tr>';
                 data.forEach(user => {
                     html += `<tr>
                         <td>${user.id}</td>
                         <td>${user.name}</td>
-                        <td><button class="btn danger" onclick="deleteUserById(${user.id})">Delete</button></td>
+                        <td>${user.email || 'N/A'}</td>
+                        <td>${user.role || 'Team Member'}</td>
+                        <td>
+                            <button class="btn small success" onclick="editUserScheduleById(${user.id})">📅 Schedule</button>
+                            <button class="btn small warning" onclick="editAvailabilityById(${user.id})">⏰ Availability</button>
+                            <button class="btn small danger" onclick="deleteUserById(${user.id})">Delete</button>
+                        </td>
                     </tr>`;
                 });
                 html += '</table></div>';
                 output.innerHTML = html;
             } else if (data.users) {
                 // Display weekly summary as a table
-                let html = '<strong>📊 Weekly Summary Report</strong><br><br>';
+                let html = '<strong>📊 Weekly Schedule Summary</strong><br><br>';
                 html += '<div class="table-container"><table>';
-                html += '<tr><th>Name</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th><th>Total</th></tr>';
+                html += '<tr><th>Name</th><th>Role</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th><th>Total</th></tr>';
                 data.users.forEach(user => {
                     html += `<tr>
                         <td><strong>${user.userName}</strong></td>
+                        <td>${user.userRole || 'N/A'}</td>
                         <td>${user.hours.monday}h</td>
                         <td>${user.hours.tuesday}h</td>
                         <td>${user.hours.wednesday}h</td>
@@ -381,7 +651,7 @@
                     </tr>`;
                 });
                 html += `<tr style="border-top: 2px solid #667eea; background: #f8f9ff;">
-                    <td colspan="8"><strong>GRAND TOTAL</strong></td>
+                    <td colspan="9"><strong>GRAND TOTAL</strong></td>
                     <td class="total">${data.grandTotal}h</td>
                 </tr>`;
                 html += '</table></div>';
@@ -414,6 +684,97 @@
             }
         }
         
+        // Modal functions
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content and mark tab as active
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        // Time slot helper functions
+        function createTimeSlotSelects(startTime = '09:00', endTime = '17:00') {
+            const startSelect = document.createElement('select');
+            const endSelect = document.createElement('select');
+            
+            startSelect.innerHTML = '<option value="">Start Time</option>';
+            endSelect.innerHTML = '<option value="">End Time</option>';
+            
+            timeSlots.forEach(slot => {
+                startSelect.innerHTML += `<option value="${slot.value}" ${slot.value === startTime ? 'selected' : ''}>${slot.display}</option>`;
+                endSelect.innerHTML += `<option value="${slot.value}" ${slot.value === endTime ? 'selected' : ''}>${slot.display}</option>`;
+            });
+            
+            return { startSelect, endSelect };
+        }
+        
+        function createScheduleDay(dayName, slots = []) {
+            const dayDiv = document.createElement('div');
+            dayDiv.className = 'schedule-day';
+            dayDiv.innerHTML = `<h4>${dayName}</h4>`;
+            
+            const slotsContainer = document.createElement('div');
+            dayDiv.appendChild(slotsContainer);
+            
+            // Add existing slots
+            slots.forEach((slot, index) => {
+                const slotDiv = createTimeSlotDiv(dayName, slot.start, slot.end, index);
+                slotsContainer.appendChild(slotDiv);
+            });
+            
+            // Add "Add Slot" button
+            const addBtn = document.createElement('button');
+            addBtn.className = 'btn add-slot-btn';
+            addBtn.innerHTML = '➕ Add Time Slot';
+            addBtn.onclick = () => {
+                const newSlotDiv = createTimeSlotDiv(dayName, '', '', slotsContainer.children.length);
+                slotsContainer.appendChild(newSlotDiv);
+            };
+            dayDiv.appendChild(addBtn);
+            
+            return dayDiv;
+        }
+        
+        function createTimeSlotDiv(dayName, startTime, endTime, index) {
+            const slotDiv = document.createElement('div');
+            slotDiv.className = 'time-slot';
+            
+            const { startSelect, endSelect } = createTimeSlotSelects(startTime, endTime);
+            startSelect.name = `${dayName}_start_${index}`;
+            endSelect.name = `${dayName}_end_${index}`;
+            
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'btn danger small';
+            removeBtn.innerHTML = '🗑️';
+            removeBtn.onclick = () => slotDiv.remove();
+            
+            slotDiv.appendChild(document.createTextNode('From: '));
+            slotDiv.appendChild(startSelect);
+            slotDiv.appendChild(document.createTextNode(' To: '));
+            slotDiv.appendChild(endSelect);
+            slotDiv.appendChild(removeBtn);
+            
+            return slotDiv;
+        }
+        
+        // User management functions
         async function loadUsers() {
             const button = event?.target || document.querySelector('[onclick="loadUsers()"]');
             setLoading(button);
@@ -444,6 +805,8 @@
         
         async function addUser() {
             const userName = document.getElementById('userName').value.trim();
+            const userEmail = document.getElementById('userEmail').value.trim();
+            const userRole = document.getElementById('userRole').value;
             const button = event?.target || document.querySelector('[onclick="addUser()"]');
             
             if (!userName) {
@@ -456,10 +819,16 @@
             try {
                 const data = await makeRequest('/users', {
                     method: 'POST',
-                    body: JSON.stringify({ name: userName })
+                    body: JSON.stringify({ 
+                        name: userName,
+                        email: userEmail,
+                        role: userRole
+                    })
                 });
                 
                 document.getElementById('userName').value = '';
+                document.getElementById('userEmail').value = '';
+                document.getElementById('userRole').value = 'Team Member';
                 displaySuccess(`✅ Team member "${data.name}" added successfully! (ID: ${data.id})`);
                 
                 // Refresh the data
@@ -473,34 +842,13 @@
         
         async function deleteUser() {
             const userId = document.getElementById('userId').value;
-            const button = event?.target || document.querySelector('[onclick="deleteUser()"]');
             
             if (!userId) {
                 displayError('Please enter a user ID');
                 return;
             }
             
-            if (!confirm(`Are you sure you want to delete user with ID ${userId}?`)) {
-                return;
-            }
-            
-            setLoading(button);
-            
-            try {
-                const data = await makeRequest(`/users/${userId}`, {
-                    method: 'DELETE'
-                });
-                
-                document.getElementById('userId').value = '';
-                displaySuccess(`✅ ${data.message}`);
-                
-                // Refresh the data
-                setTimeout(loadWeeklySummary, 1000);
-            } catch (error) {
-                console.error('Failed to delete user:', error);
-            } finally {
-                setLoading(button, false);
-            }
+            await deleteUserById(userId);
         }
         
         async function deleteUserById(id) {
@@ -513,6 +861,7 @@
                     method: 'DELETE'
                 });
                 
+                document.getElementById('userId').value = '';
                 displaySuccess(`✅ ${data.message}`);
                 setTimeout(loadWeeklySummary, 1000);
             } catch (error) {
@@ -532,12 +881,303 @@
             setLoading(button);
             
             try {
-                const data = await makeRequest(`/users/${userId}/weekly-hours`);
-                displayData(data, `⏰ Weekly Hours for ${data.userName}`);
+                const data = await makeRequest(`/users/${userId}/schedule`);
+                displayData(data, `⏰ Schedule Details for ${data.userName}`);
             } catch (error) {
                 console.error('Failed to get user hours:', error);
             } finally {
                 setLoading(button, false);
+            }
+        }
+        
+        // Schedule editing functions
+        async function editUserSchedule() {
+            const userId = document.getElementById('userId').value;
+            
+            if (!userId) {
+                displayError('Please enter a user ID');
+                return;
+            }
+            
+            await editUserScheduleById(userId);
+        }
+        
+        async function editUserScheduleById(userId) {
+            try {
+                currentUserId = userId;
+                const userData = await makeRequest(`/users/${userId}/schedule`);
+                
+                document.getElementById('scheduleModalTitle').textContent = `Edit Schedule - ${userData.userName}`;
+                
+                const scheduleForm = document.getElementById('scheduleForm');
+                scheduleForm.innerHTML = '';
+                
+                const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+                days.forEach(day => {
+                    const daySchedule = userData.schedule[day] || [];
+                    const dayDiv = createScheduleDay(day, daySchedule);
+                    scheduleForm.appendChild(dayDiv);
+                });
+                
+                showModal('scheduleModal');
+            } catch (error) {
+                console.error('Failed to load user schedule:', error);
+            }
+        }
+        
+        async function saveSchedule() {
+            if (!currentUserId) return;
+            
+            const scheduleData = {};
+            const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+            
+            days.forEach(day => {
+                scheduleData[day] = [];
+                const dayContainer = document.querySelector(`.schedule-day h4[textContent="${day}"]`)?.parentElement;
+                if (!dayContainer) return;
+                
+                const timeSlots = dayContainer.querySelectorAll('.time-slot');
+                timeSlots.forEach(slot => {
+                    const startSelect = slot.querySelector(`select[name^="${day}_start"]`);
+                    const endSelect = slot.querySelector(`select[name^="${day}_end"]`);
+                    
+                    if (startSelect && endSelect && startSelect.value && endSelect.value) {
+                        if (startSelect.value < endSelect.value) {
+                            scheduleData[day].push({
+                                start: startSelect.value,
+                                end: endSelect.value
+                            });
+                        }
+                    }
+                });
+            });
+            
+            try {
+                await makeRequest(`/users/${currentUserId}/schedule`, {
+                    method: 'PUT',
+                    body: JSON.stringify({ schedule: scheduleData })
+                });
+                
+                displaySuccess('✅ Schedule updated successfully!');
+                closeModal('scheduleModal');
+                setTimeout(loadWeeklySummary, 1000);
+            } catch (error) {
+                console.error('Failed to save schedule:', error);
+            }
+        }
+        
+        // Availability editing functions
+        async function editAvailability() {
+            const userId = document.getElementById('userId').value;
+            
+            if (!userId) {
+                displayError('Please enter a user ID');
+                return;
+            }
+            
+            await editAvailabilityById(userId);
+        }
+        
+        async function editAvailabilityById(userId) {
+            try {
+                currentUserId = userId;
+                
+                // Get user data
+                const users = await makeRequest('/users');
+                const user = users.find(u => u.id == userId);
+                if (!user) throw new Error('User not found');
+                
+                document.getElementById('availabilityModalTitle').textContent = `Edit Availability - ${user.name}`;
+                
+                // Load permanent availability
+                await loadPermanentAvailability();
+                
+                // Load temporary availability
+                await loadExistingTempAvailability();
+                
+                showModal('availabilityModal');
+            } catch (error) {
+                console.error('Failed to load availability:', error);
+            }
+        }
+        
+        async function loadPermanentAvailability() {
+            try {
+                const data = await makeRequest(`/users/${currentUserId}/permanent-availability`);
+                
+                const form = document.getElementById('permanentAvailabilityForm');
+                form.innerHTML = '';
+                
+                const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+                days.forEach(day => {
+                    const dayAvailability = data.permanentAvailability[day] || [];
+                    const dayDiv = createScheduleDay(day, dayAvailability);
+                    form.appendChild(dayDiv);
+                });
+            } catch (error) {
+                console.error('Failed to load permanent availability:', error);
+            }
+        }
+        
+        async function loadExistingTempAvailability() {
+            try {
+                const data = await makeRequest(`/users/${currentUserId}/temporary-availability`);
+                
+                const container = document.getElementById('existingTempAvailability');
+                container.innerHTML = '<h4>Existing Temporary Changes:</h4>';
+                
+                if (Object.keys(data.temporaryAvailability).length === 0) {
+                    container.innerHTML += '<p style="color: #666; font-style: italic;">No temporary changes set.</p>';
+                    return;
+                }
+                
+                Object.entries(data.temporaryAvailability).forEach(([date, availability]) => {
+                    const dateDiv = document.createElement('div');
+                    dateDiv.className = 'schedule-day';
+                    dateDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h4>${new Date(date).toLocaleDateString()} Changes</h4>
+                            <button class="btn danger small" onclick="removeTempAvailability('${date}')">Remove</button>
+                        </div>
+                    `;
+                    
+                    Object.entries(availability).forEach(([day, slots]) => {
+                        if (slots.length > 0) {
+                            dateDiv.innerHTML += `<p><strong>${day.charAt(0).toUpperCase() + day.slice(1)}:</strong> `;
+                            slots.forEach((slot, index) => {
+                                const startTime = timeSlots.find(t => t.value === slot.start)?.display || slot.start;
+                                const endTime = timeSlots.find(t => t.value === slot.end)?.display || slot.end;
+                                dateDiv.innerHTML += `${startTime} - ${endTime}`;
+                                if (index < slots.length - 1) dateDiv.innerHTML += ', ';
+                            });
+                            dateDiv.innerHTML += '</p>';
+                        } else {
+                            dateDiv.innerHTML += `<p><strong>${day.charAt(0).toUpperCase() + day.slice(1)}:</strong> Not available</p>`;
+                        }
+                    });
+                    
+                    container.appendChild(dateDiv);
+                });
+            } catch (error) {
+                console.error('Failed to load temporary availability:', error);
+            }
+        }
+        
+        async function addTempAvailability() {
+            const date = document.getElementById('tempDate').value;
+            if (!date) {
+                alert('Please select a date first');
+                return;
+            }
+            
+            const dateObj = new Date(date);
+            const dayOfWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][dateObj.getDay()];
+            
+            const form = document.getElementById('temporaryAvailabilityForm');
+            form.innerHTML = `<h4>Set availability for ${dateObj.toLocaleDateString()} (${dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1)})</h4>`;
+            
+            const dayDiv = createScheduleDay(dayOfWeek, []);
+            form.appendChild(dayDiv);
+            
+            const saveBtn = document.createElement('button');
+            saveBtn.className = 'btn success';
+            saveBtn.innerHTML = '💾 Save This Date';
+            saveBtn.onclick = () => saveTempAvailability(date, dayOfWeek);
+            form.appendChild(saveBtn);
+        }
+        
+        async function saveTempAvailability(date, dayOfWeek) {
+            const dayContainer = document.querySelector(`#temporaryAvailabilityForm .schedule-day`);
+            if (!dayContainer) return;
+            
+            const slots = [];
+            const timeSlots = dayContainer.querySelectorAll('.time-slot');
+            
+            timeSlots.forEach(slot => {
+                const startSelect = slot.querySelector('select[name^="' + dayOfWeek + '_start"]');
+                const endSelect = slot.querySelector('select[name^="' + dayOfWeek + '_end"]');
+                
+                if (startSelect && endSelect && startSelect.value && endSelect.value) {
+                    if (startSelect.value < endSelect.value) {
+                        slots.push({
+                            start: startSelect.value,
+                            end: endSelect.value
+                        });
+                    }
+                }
+            });
+            
+            const availability = {};
+            availability[dayOfWeek] = slots;
+            
+            try {
+                await makeRequest(`/users/${currentUserId}/temporary-availability`, {
+                    method: 'PUT',
+                    body: JSON.stringify({ date, availability })
+                });
+                
+                displaySuccess(`✅ Temporary availability saved for ${date}!`);
+                document.getElementById('temporaryAvailabilityForm').innerHTML = '';
+                document.getElementById('tempDate').value = '';
+                await loadExistingTempAvailability();
+            } catch (error) {
+                console.error('Failed to save temporary availability:', error);
+            }
+        }
+        
+        async function removeTempAvailability(date) {
+            if (!confirm(`Remove temporary availability for ${date}?`)) return;
+            
+            try {
+                await makeRequest(`/users/${currentUserId}/temporary-availability/${date}`, {
+                    method: 'DELETE'
+                });
+                
+                displaySuccess(`✅ Temporary availability removed for ${date}!`);
+                await loadExistingTempAvailability();
+            } catch (error) {
+                console.error('Failed to remove temporary availability:', error);
+            }
+        }
+        
+        async function saveAvailability() {
+            if (!currentUserId) return;
+            
+            // Save permanent availability
+            const permanentData = {};
+            const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+            
+            days.forEach(day => {
+                permanentData[day] = [];
+                const dayContainer = document.querySelector(`#permanentAvailabilityForm .schedule-day h4[textContent="${day}"]`)?.parentElement;
+                if (!dayContainer) return;
+                
+                const timeSlots = dayContainer.querySelectorAll('.time-slot');
+                timeSlots.forEach(slot => {
+                    const startSelect = slot.querySelector(`select[name^="${day}_start"]`);
+                    const endSelect = slot.querySelector(`select[name^="${day}_end"]`);
+                    
+                    if (startSelect && endSelect && startSelect.value && endSelect.value) {
+                        if (startSelect.value < endSelect.value) {
+                            permanentData[day].push({
+                                start: startSelect.value,
+                                end: endSelect.value
+                            });
+                        }
+                    }
+                });
+            });
+            
+            try {
+                await makeRequest(`/users/${currentUserId}/permanent-availability`, {
+                    method: 'PUT',
+                    body: JSON.stringify({ availability: permanentData })
+                });
+                
+                displaySuccess('✅ Availability updated successfully!');
+                closeModal('availabilityModal');
+            } catch (error) {
+                console.error('Failed to save availability:', error);
             }
         }
         
@@ -568,6 +1208,13 @@
         
         function clearOutput() {
             document.getElementById('output').innerHTML = 'Output cleared. Click any button above to load data...';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
         }
     </script>
 </body>
